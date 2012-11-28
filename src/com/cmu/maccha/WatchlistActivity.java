@@ -1,18 +1,22 @@
 package com.cmu.maccha;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
+import android.widget.TextView;
 
 public class WatchlistActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_watchlist);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        TextView textview = new TextView(this);
+        textview.setText("This is Android tab");
+        setContentView(textview);
+//        setContentView(R.layout.activity_watchlist);
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

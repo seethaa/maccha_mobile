@@ -18,7 +18,8 @@ public class MainActivity extends Activity {
 	private static String user;
 	private static String pass;
 	static final String TAG = "MACCHA";
-	
+	private static EditText un;
+	private static EditText pw;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,11 +27,13 @@ public class MainActivity extends Activity {
         
         setContentView(R.layout.activity_main);
         
-        EditText un = (EditText) this.findViewById(R.id.username);
+       
+    	
+        un = (EditText) this.findViewById(R.id.username);
         Editable usrnm = un.getText();
         user = usrnm.toString();
         
-        EditText pw = (EditText) this.findViewById(R.id.password);
+        pw = (EditText) this.findViewById(R.id.password);
         Editable pwd = pw.getText();
         pass = pwd.toString();
         
@@ -53,11 +56,19 @@ public class MainActivity extends Activity {
     	@Override
     	public void onClick(View v) {
     		//check if user is real..sign in user:
-    		Log.d("TAG", "USER PRESSED SUBMIT");
-    		//if (user.equals(USER) && pass.equals(PASS)){
+    		
+    		Editable usrnm = un.getText();
+            user = usrnm.toString();
+         
+            Editable pwd = pw.getText();
+            pass = pwd.toString();
+            
+    		Log.d("TAG", "USER PRESSED SUBMIT: " + user + ", " + pass);
+    		if (user.equals(USER) && pass.equals(PASS)){
+    			Log.d("TAG", "User authenticated..");
 	        	Intent intent = new Intent(MainActivity.this, MyCha.class); 
 	        	startActivity(intent);
-    		//}
+    		}
         }
     };
 

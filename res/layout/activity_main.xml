@@ -31,7 +31,7 @@
             android:layout_marginTop="42dp"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:text="user@domain" />
+            android:text="" />
 
         <TextView
             android:id="@+id/textView3"
@@ -48,7 +48,7 @@
         android:layout_below="@+id/linearLayout1"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="ldkkdd" >
+        android:text="" >
 
         <requestFocus />
     </EditText>
