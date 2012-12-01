@@ -112,7 +112,33 @@ public class ActiveBidsActivity extends Activity {
     }
 
  
+    @Override
+	protected void onResume()
+	{
+		super.onResume();
+		updateBids("seethaa@cmu.edu");
+		this.adapter.notifyDataSetChanged();
+	
+	}
 
+	@Override
+	protected void onPause()
+	{
+
+		super.onPause();
+		updateBids("seethaa@cmu.edu");
+		this.adapter.notifyDataSetChanged();
+		
+	}
+
+	@Override
+	protected void onStop()
+	{
+		super.onStop();
+		updateBids("seethaa@cmu.edu");
+		this.adapter.notifyDataSetChanged();
+		
+	}
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

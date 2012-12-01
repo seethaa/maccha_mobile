@@ -77,48 +77,26 @@ public class LazyAdapter extends BaseAdapter {
 	        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 	        System.out.println("current time.." +dateFormat.format(date));
 	        
-	        SimpleDateFormat sdfgmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	        sdfgmt.setTimeZone(TimeZone.getTimeZone("EST"));
-	        
-	        
-	    
-	       
+	
 	        Date expdate = null;
-	        Date newExpDate = null;
-	        Date inptdate = null;
+
 	        
 	        try {
 				expdate = parseDate(expired, "yyyy-MM-dd HH:mm:ss");
-				
-				
-//				newExpDate = dateFormat.format(shiftTimeZone(expdate, TimeZone.getTimeZone("GMT"), TimeZone.getTimeZone("EST")));
-				inptdate = sdfgmt.parse(expired);
-//				System.out.println("EST:\t\t" + sdfgmt.format(expdate));
-				Log.d("TAG","EXPIRED DATE: " + dateFormat.format(expdate));
+	
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	        
-	        DateFormat estFormat = new SimpleDateFormat();
-	        DateFormat gmtFormat = new SimpleDateFormat();
-	        TimeZone gmtTime = TimeZone.getTimeZone("GMT");
-	        TimeZone estTime = TimeZone.getTimeZone("EST");
-	        estFormat.setTimeZone(gmtTime);
-	        gmtFormat.setTimeZone(estTime);
-//	        System.out.println("GMT Time: " + estFormat.format(expdate));
-//	        System.out.println("EST Time: " + gmtFormat.format(expdate));
-	        
-	        Date newExp = null;
-	        
-	     
 	        
 	        //get current date time with Calendar()
 	 	   Calendar cal = Calendar.getInstance();
 //	 	   System.out.println(dateFormat.format(cal.getTime()));
-	 	   Log.d("TAG","CURRENT DATE: " + dateFormat.format(cal.getTime()));
+	 	   Log.d("TAG","CURRENT DATE: " + dateFormat.format(cal.getTime()) + "EXPIRE DATE: " +dateFormat.format(expdate));
 	 	  
 	 	  int results = date.compareTo(expdate);
+	 	 Log.d("TAG","time cmpare:  "+results);// -1 means first before secnd..not expired
 	 	   String highest = item.get(ActiveBidsActivity.KEY_HIGHESTPRICE);
 	 	   String mycurrprice = item.get(ActiveBidsActivity.KEY_MYPRICE);
 	 	   
@@ -138,15 +116,7 @@ public class LazyAdapter extends BaseAdapter {
 	 	    	 status.setText("Losing :(");
 	 	    	 status.setTextColor(Color.parseColor("#FF5721"));
 	 	      }
-	 	  /*   if (stat.equals("1")){
-		        	status.setText("Winning :)");
-		        	status.setTextColor(Color.parseColor("#3B5323"));
-		        }
-		        else if (stat.equals("2")){
-		        	status.setText("Losing :(");
-		        	status.setTextColor(Color.parseColor("#FF5721"));
-
-		        }*/
+	 	
 	 	    }
 	 	    else {
 	 	      System.out.println("expdate is before today.");
@@ -156,7 +126,7 @@ public class LazyAdapter extends BaseAdapter {
 	 	   
 	        
 	 	   System.out.println("highest bid is: " +item.get(ActiveBidsActivity.KEY_HIGHESTPRICE));
-	        highestBid.setText("$"+item.get(ActiveBidsActivity.KEY_HIGHESTPRICE));
+	        highestBid.setText("$"+item.get(ActiveBidsActivity.KEY_HIGHESTPRICE) + "0");
 	        imageLoader.DisplayImage("http://10.0.2.2:3000"+item.get(ActiveBidsActivity.KEY_THUMB_URL), thumb_image);
 //	        imageLoader.DisplayImage("http://japanese.pages.tcnj.edu/files/2011/09/Maccha_200.jpg", thumb_image);
 	        
@@ -165,19 +135,6 @@ public class LazyAdapter extends BaseAdapter {
         return vi;
     }
     
-    private Date shiftTimeZone(Date date, TimeZone sourceTimeZone, TimeZone targetTimeZone) {
-        Calendar sourceCalendar = Calendar.getInstance();
-        sourceCalendar.setTime(date);
-        sourceCalendar.setTimeZone(sourceTimeZone);
-
-        Calendar targetCalendar = Calendar.getInstance();
-        for (int field : new int[] {Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH, Calendar.HOUR, Calendar.MINUTE, Calendar.SECOND, Calendar.MILLISECOND}) {
-            targetCalendar.set(field, sourceCalendar.get(field));
-        }
-        targetCalendar.setTimeZone(targetTimeZone);
-
-        return targetCalendar.getTime();
-    }
     
     private Date parseDate(String date, String format) throws ParseException
     {
