@@ -49,23 +49,24 @@ public class LazyAdapter extends BaseAdapter {
 //        TextView duration = (TextView)vi.findViewById(R.id.duration); // duration
         ImageView thumb_image=(ImageView)vi.findViewById(R.id.list_image); // thumb image
  
-        HashMap<String, String> song = new HashMap<String, String>();
-        song = data.get(position);
+        HashMap<String, String> item = new HashMap<String, String>();
+        item = data.get(position);
  
         // Setting all values in listview
+      
+	        Log.d("TAG", "NAME: " +item.get(ActiveBidsActivity.KEY_NAME));
+	        name.setText(item.get(ActiveBidsActivity.KEY_NAME));
+	        
+	        Log.d("TAG", "STATUS: " +item.get(ActiveBidsActivity.KEY_STATUS));
+	       // status.setText(item.get(ActiveBidsActivity.KEY_STATUS));
+	        status.setText("Default text.Replace");
+	        
+	//        duration.setText(item.get(ActiveBidsActivity.KEY_DURATION));
+	       // imageLoader.DisplayImage(item.get(ActiveBidsActivity.KEY_THUMB_URL), thumb_image);
+	        imageLoader.DisplayImage("http://japanese.pages.tcnj.edu/files/2011/09/Maccha_200.jpg", thumb_image);
         
-        Log.d("TAG", "NAME: " +song.get(ActiveBidsActivity.KEY_NAME));
-        name.setText(song.get(ActiveBidsActivity.KEY_NAME));
         
-        Log.d("TAG", "STATUS: " +song.get(ActiveBidsActivity.KEY_STATUS));
-       // status.setText(song.get(ActiveBidsActivity.KEY_STATUS));
-        status.setText("Default text.Replace");
-        
-//        duration.setText(song.get(ActiveBidsActivity.KEY_DURATION));
-       // imageLoader.DisplayImage(song.get(ActiveBidsActivity.KEY_THUMB_URL), thumb_image);
-        imageLoader.DisplayImage("http://japanese.pages.tcnj.edu/files/2011/09/Maccha_200.jpg", thumb_image);
-        
-        
+     
         return vi;
     }
 }

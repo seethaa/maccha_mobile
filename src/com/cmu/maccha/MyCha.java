@@ -15,7 +15,7 @@ import android.widget.TabHost.TabSpec;
 public class MyCha extends TabActivity {
 //	private FragmentTabHost mTabHost;
 	
-	
+	static int currentTab = 1;
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	
@@ -81,6 +81,14 @@ public class MyCha extends TabActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    public int getCurrentTab(){
+    	return MyCha.currentTab;
+    }
+    
+    public void setCurrentTab(int c){
+    	MyCha.currentTab = c;
     }
 
 }

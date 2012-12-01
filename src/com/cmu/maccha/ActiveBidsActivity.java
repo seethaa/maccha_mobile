@@ -38,7 +38,7 @@ import android.widget.TextView;
 public class ActiveBidsActivity extends Activity {
 	static final String TAG = "MACCHA";
 	private ArrayList<String> itemsToAdd;
-	private  ArrayList<HashMap<String, String>> songsList;
+	private  ArrayList<HashMap<String, String>> itemsList;
 	private ArrayList<String> addedNames;
 	
 	//XML node keys
@@ -59,17 +59,14 @@ public class ActiveBidsActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TextView textview = new TextView(this);
-       // textview.setText("This is Android tab");
-       // setContentView(textview);
-        
-        
+    
+        MyCha.currentTab = 1;
         setContentView(R.layout.activity_active_bids);
         
         Log.d("TAG", "I got to first active bids activity..");
         addedNames = new ArrayList<String>();
         
-        songsList = new ArrayList<HashMap<String, String>>();
+        itemsList = new ArrayList<HashMap<String, String>>();
         
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -80,7 +77,7 @@ public class ActiveBidsActivity extends Activity {
 	        	//Thread t = new Thread(){
 	        	    //public void run(){
 	        	    	try {
-							updateBids2("seethaa@cmu.edu");
+							updateBids("seethaa@cmu.edu");
 						} catch (Exception e) {
 							Log.d("TAG", "user can't be found.");
 							e.printStackTrace();
@@ -94,7 +91,7 @@ public class ActiveBidsActivity extends Activity {
 	        	list=(ListView)findViewById(R.id.list);
 
 	        	// Getting adapter by passing xml data ArrayList
-	        	adapter=new LazyAdapter(this, songsList);
+	        	adapter=new LazyAdapter(this, itemsList);
 	        	list.setAdapter(adapter);
 
 	        	// Click event for single list row
@@ -125,7 +122,7 @@ public class ActiveBidsActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
     
-    private void updateBids2(String username ){
+    private void updateBids(String username ){
     	String URL = "http://10.0.2.2:3000/api/users/1/bids.xml";
     	  XMLParser parser = new XMLParser();
           String xml = parser.getXmlFromUrl(URL); // getting XML from URL
@@ -157,7 +154,7 @@ public class ActiveBidsActivity extends Activity {
 		 
 		        
 		            // adding HashList to ArrayList
-		            songsList.add(map);
+		            itemsList.add(map);
 	            }
           }
    
@@ -166,106 +163,5 @@ public class ActiveBidsActivity extends Activity {
     }
     
     
-/*	private void updateBids(String username) throws Exception
-	{
-//		String lat = Double.toString(latitude);
-//		String lon = Double.toString(longitude);
-//		String placereq = "https://maps.googleapis.com/maps/api/place/search/xml?location=" + lon + "," + lat + "&radius=8000&types=" + placeToFind + "&sensor=true&" + "key=" + this.googleApiKey;
-
-		String getReq = "http://10.0.2.2:3000/api/users/1/bids.xml";
-		String temp = "";
-
-		String responseString = null;
-		HttpClient httpclient = new DefaultHttpClient();
-		HttpResponse response = httpclient.execute(new HttpGet(getReq));
-		StatusLine statusLine = response.getStatusLine();
-		if (statusLine.getStatusCode() == HttpStatus.SC_OK)
-		{
-			Log.d("TAG", "SENT THE REQ");
-
-			ByteArrayOutputStream out = new ByteArrayOutputStream();
-			response.getEntity().writeTo(out);
-			out.close();
-			responseString = out.toString();
-
-			Log.d("TAG", responseString);
-			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-			DocumentBuilder db = dbf.newDocumentBuilder();
-			InputSource is = new InputSource();
-			is.setCharacterStream(new StringReader(responseString));
-
-			Document doc = db.parse(is);
-			NodeList nodes = doc.getElementsByTagName("bids");
-//			placesToAdd.clear();
-
-			
-			
-			for (int i = 0; i < nodes.getLength(); i++)
-			{
-				
-				
-				 // creating new HashMap
-	            HashMap<String, String> map = new HashMap<String, String>();
-	            Element e = (Element) nodes.item(i);
-	            // adding each child node to HashMap key =&gt; value
-	            map.put(KEY_NAME, parser.getValue(e, KEY_NAME));
-	            map.put(KEY_PRICE, parser.getValue(e, KEY_PRICE));
-	            map.put(KEY_STATUS, parser.getValue(e, KEY_STATUS));
-	            map.put(KEY_DESC, parser.getValue(e, KEY_DESC));
-	            map.put(KEY_CATEGORY, parser.getValue(e, KEY_CATEGORY));
-	            map.put(KEY_CONDITION, parser.getValue(e, KEY_CONDITION));
-	            map.put(KEY_LOCATION, parser.getValue(e, KEY_LOCATION));
-	            map.put(KEY_SELLERNAME, parser.getValue(e, KEY_SELLERNAME));
-	            map.put(KEY_EXPIREDATE, parser.getValue(e, KEY_EXPIREDATE));
-	            map.put(KEY_THUMB_URL, parser.getValue(e, KEY_THUMB_URL));
-	 
-	        
-	            // adding HashList to ArrayList
-	            songsList.add(map);
-				Element element = (Element) nodes.item(i);
-
-				NodeList name = element.getElementsByTagName("name");
-				Element line = (Element) name.item(0);
-				
-				temp = (getCharacterDataFromElement(line));
-				temp += ":\n";
-
-				NodeList title = element.getElementsByTagName("picture-url");
-				line = (Element) title.item(0);
-				temp += (getCharacterDataFromElement(line));
-
-				Log.d("TAG", temp);
-//				placesToAdd.add(temp);
-			}
-
-		}
-		else
-		{
-			// Closes the connection.
-			response.getEntity().getContent().close();
-			throw new IOException(statusLine.getReasonPhrase());
-		}
-		if (myAdapter == null)
-		{
-			this.myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, this.placesToAdd);
-			this.listLocations.setAdapter(myAdapter);
-		}
-
-		myAdapter.notifyDataSetChanged();
-	}*/
-	
-	/**
-	 * Necessary method to parse xml file of string containing xml
-	 */
-	public static String getCharacterDataFromElement(Element e)
-	{
-		Node child = e.getFirstChild();
-		if (child instanceof CharacterData)
-		{
-			CharacterData cd = (CharacterData) child;
-			return cd.getData();
-		}
-		return "?";
-	}
 
 }
