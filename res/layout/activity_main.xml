@@ -25,13 +25,13 @@
 
         <EditText
             android:id="@+id/username"
-            android:layout_width="wrap_content"
+            android:layout_width="294dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="77dp"
             android:layout_marginTop="42dp"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:text="" />
+            android:text="seethaa@cmu.edu" />
 
         <TextView
             android:id="@+id/textView3"
@@ -48,7 +48,7 @@
         android:layout_below="@+id/linearLayout1"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="" >
+        android:text="chapwd" >
 
         <requestFocus />
     </EditText>

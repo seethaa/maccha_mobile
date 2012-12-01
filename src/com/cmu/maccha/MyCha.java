@@ -27,41 +27,41 @@ public class MyCha extends TabActivity {
 		TabHost tabHost = getTabHost(); 
  
 		// Active bids tab
-		Intent intentAndroid = new Intent().setClass(this, ActiveBidsActivity.class);
-		TabSpec tabSpecAndroid = tabHost
+		Intent intentActive = new Intent().setClass(this, ActiveBidsActivity.class);
+		TabSpec tabSpecActive = tabHost
 		  .newTabSpec("Active Bids")
 		  .setIndicator("", ressources.getDrawable(R.drawable.icon_activebids_config))
-		  .setContent(intentAndroid);
+		  .setContent(intentActive);
  
 		// My orders tab
-		Intent intentApple = new Intent().setClass(this, MyOrdersActivity.class);
-		TabSpec tabSpecApple = tabHost
+		Intent intentOrders = new Intent().setClass(this, MyOrdersActivity.class);
+		TabSpec tabSpecOrders = tabHost
 		  .newTabSpec("My Orders")
 		  .setIndicator("", ressources.getDrawable(R.drawable.icon_myorders_config))
-		  .setContent(intentApple);
+		  .setContent(intentOrders);
  
 		// Watchlist tab
-		Intent intentWindows = new Intent().setClass(this, WatchlistActivity.class);
-		TabSpec tabSpecWindows = tabHost
+		Intent intentWatchlist = new Intent().setClass(this, WatchlistActivity.class);
+		TabSpec tabSpecWatchlist = tabHost
 		  .newTabSpec("Watchlist")
 		  .setIndicator("", ressources.getDrawable(R.drawable.icon_watchlist_config))
-		  .setContent(intentWindows);
+		  .setContent(intentWatchlist);
  
 		// Settings tab
-		Intent intentBerry = new Intent().setClass(this, SettingsActivity.class);
-		TabSpec tabSpecBerry = tabHost
+		Intent intentSettings = new Intent().setClass(this, SettingsActivity.class);
+		TabSpec tabSpecSettings = tabHost
 		  .newTabSpec("Settings")
 		  .setIndicator("", ressources.getDrawable(R.drawable.icon_settings_config))
-		  .setContent(intentBerry);
+		  .setContent(intentSettings);
  
 		// add all tabs 
-		tabHost.addTab(tabSpecAndroid);
-		tabHost.addTab(tabSpecApple);
-		tabHost.addTab(tabSpecWindows);
-		tabHost.addTab(tabSpecBerry);
+		tabHost.addTab(tabSpecActive);
+		tabHost.addTab(tabSpecOrders);
+		tabHost.addTab(tabSpecWatchlist);
+		tabHost.addTab(tabSpecSettings);
  
-		//set Windows tab as default (zero based)
-		tabHost.setCurrentTab(2);
+		//set Watchlist tab as default (zero based)
+		tabHost.setCurrentTab(0);
 		
 //        getActionBar().setDisplayHomeAsUpEnabled(true);
     }

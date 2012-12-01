@@ -26,8 +26,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         setContentView(R.layout.activity_main);
-        
-       
     	
         un = (EditText) this.findViewById(R.id.username);
         Editable usrnm = un.getText();
@@ -39,9 +37,7 @@ public class MainActivity extends Activity {
         
         Log.d("TAG", "user: " + user);
         Button submitButton = (Button) this.findViewById(R.id.submitButton);
-        submitButton.setOnClickListener(submit);
-        
-        
+        submitButton.setOnClickListener(submit);   
         
     }
 
