@@ -52,6 +52,8 @@ public class ActiveBidsActivity extends Activity {
 	static final String KEY_SELLERNAME = "seller_id"; //int
 	static final String KEY_EXPIREDATE = "end-time"; //datetime
 	static final String KEY_THUMB_URL= "picture-url";
+	static final String KEY_MYPRICE= "my-bid-price";
+	static final String KEY_HIGHESTPRICE= "max-bid";
 
 	ListView list;
     LazyAdapter adapter;
@@ -136,6 +138,9 @@ public class ActiveBidsActivity extends Activity {
 	            HashMap<String, String> map = new HashMap<String, String>();
 	            Element e = (Element) nl.item(i);
 	            
+	           //int x = (//element[@name='same'])[2];
+	            Log.d("TAG", "curr bid try: ");
+	            
 	            String newName = parser.getValue(e, KEY_NAME);
 	            if (!addedNames.contains(newName)){
 	            	addedNames.add(newName);
@@ -149,6 +154,8 @@ public class ActiveBidsActivity extends Activity {
 		            map.put(KEY_CONDITION, parser.getValue(e, KEY_CONDITION));
 		            map.put(KEY_LOCATION, parser.getValue(e, KEY_LOCATION));
 		            map.put(KEY_SELLERNAME, parser.getValue(e, KEY_SELLERNAME));
+		            map.put(KEY_MYPRICE, parser.getValue(e, KEY_MYPRICE));
+		            map.put(KEY_HIGHESTPRICE, parser.getValue(e, KEY_HIGHESTPRICE));
 		            map.put(KEY_EXPIREDATE, parser.getValue(e, KEY_EXPIREDATE));
 		            map.put(KEY_THUMB_URL, parser.getValue(e, KEY_THUMB_URL));
 		 
