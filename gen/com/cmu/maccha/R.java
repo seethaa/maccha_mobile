@@ -20,13 +20,17 @@ public final class R {
         public static final int ic_myorders=0x7f020006;
         public static final int ic_settings=0x7f020007;
         public static final int ic_watchlist=0x7f020008;
-        public static final int icon_activebids_config=0x7f020009;
-        public static final int icon_myorders_config=0x7f02000a;
-        public static final int icon_settings_config=0x7f02000b;
-        public static final int icon_watchlist_config=0x7f02000c;
-        public static final int image_bg=0x7f02000d;
-        public static final int list_selector=0x7f02000e;
-        public static final int no_image=0x7f02000f;
+        public static final int icon_activebids=0x7f020009;
+        public static final int icon_activebids_config=0x7f02000a;
+        public static final int icon_myorders=0x7f02000b;
+        public static final int icon_myorders_config=0x7f02000c;
+        public static final int icon_settings=0x7f02000d;
+        public static final int icon_settings_config=0x7f02000e;
+        public static final int icon_watchlist=0x7f02000f;
+        public static final int icon_watchlist_config=0x7f020010;
+        public static final int image_bg=0x7f020011;
+        public static final int list_selector=0x7f020012;
+        public static final int no_image=0x7f020013;
     }
     public static final class id {
         public static final int duration=0x7f07000d;

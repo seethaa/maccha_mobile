@@ -42,7 +42,7 @@ public class WatchlistActivity extends Activity {
 		
 		
 	ListView list;
-    LazyAdapter adapter;
+    WatchListAdapter adapter;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,7 +76,7 @@ public class WatchlistActivity extends Activity {
 	        	list=(ListView)findViewById(R.id.list);
 
 	        	// Getting adapter by passing xml data ArrayList
-	        	adapter=new LazyAdapter(this, itemsList);
+	        	adapter=new WatchListAdapter(this, itemsList);
 	        	list.setAdapter(adapter);
 
 	        	// Click event for single list row
