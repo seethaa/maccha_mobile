@@ -21,14 +21,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
  
-public class LazyAdapter extends ArrayAdapter<HashMap<String, String>> {
+public class MyOrdersAdapter extends ArrayAdapter<HashMap<String, String>> {
 	
 	private ArrayList<HashMap<String, String>> data;
     private Activity activity;
     private LayoutInflater inflater=null;
     public ImageLoader imageLoader; 
  
-    public LazyAdapter(Activity a, ArrayList<HashMap<String, String>> d) {
+    public MyOrdersAdapter(Activity a, ArrayList<HashMap<String, String>> d) {
     	super(a, R.layout.list_row,d);
         activity = a;
         data=d;
@@ -67,33 +67,18 @@ public class LazyAdapter extends ArrayAdapter<HashMap<String, String>> {
         HashMap<String, String> item = new HashMap<String, String>();
         item = data.get(position);
  
+        name.setText(item.get(MyOrdersActivity.KEY_NAME));
         
-        setActiveOrdersTab(item, name, status, highestBid, thumb_image );
-        // Setting all values in listview
-      if (MyCha.currentTab ==1){
-//    	  setActiveOrdersTab(item, name, status, highestBid, thumb_image );
-      }
-      else if (MyCha.currentTab ==3){
-    	  Log.d("TAG", "I'm in watchlist activity");
-    	  //setWatchListTab(item, name, status, highestBid, thumb_image);
-      }
-	        
-     
-        return vi;
-    }
-    
-    
-    
-
-	private void setActiveOrdersTab( HashMap<String, String> item, TextView name,TextView status, TextView highestBid, ImageView thumb_image ) {
-    	Log.d("TAG", "NAME: " +item.get(ActiveBidsActivity.KEY_NAME));
-        name.setText(item.get(ActiveBidsActivity.KEY_NAME));
-        
-        Log.d("TAG", "STATUS: " +item.get(ActiveBidsActivity.KEY_STATUS));
+        Log.d("TAG", "NAME: " +item.get(MyOrdersActivity.KEY_NAME));
        // status.setText(item.get(ActiveBidsActivity.KEY_STATUS));
-        String stat = item.get(ActiveBidsActivity.KEY_STATUS);
-        String expired = item.get(ActiveBidsActivity.KEY_EXPIREDATE);
+        String stat = item.get(MyOrdersActivity.KEY_STATUS);
+        String expired = item.get(MyOrdersActivity.KEY_EXPIREDATE);
         expired = expired.substring(0,10) + " " + expired.substring(11,expired.length()-2);
+        
+//        String starttime = item.get(MyOrdersActivity.KEY_STARTTIME);
+//        starttime = starttime.substring(0,10) + " " + starttime.substring(11,starttime.length()-2);
+        
+//        System.out.println("pringing starttime.." +starttime);
         
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
@@ -103,10 +88,12 @@ public class LazyAdapter extends ArrayAdapter<HashMap<String, String>> {
         
 
         Date expdate = null;
+        Date stdate = null;
 
         
         try {
 			expdate = parseDate(expired, "yyyy-MM-dd HH:mm:ss");
+//			stdate = parseDate(starttime, "yyyy-MM-dd HH:mm:ss");
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -117,46 +104,73 @@ public class LazyAdapter extends ArrayAdapter<HashMap<String, String>> {
         //get current date time with Calendar()
  	   Calendar cal = Calendar.getInstance();
 // 	   System.out.println(dateFormat.format(cal.getTime()));
- 	   Log.d("TAG","CURRENT DATE: " + dateFormat.format(cal.getTime()) + "EXPIRE DATE: " +dateFormat.format(expdate));
+ 	   Log.d("TAG","CURRENT DATE: " + dateFormat.format(cal.getTime()) + "EXPIRE DATE: " +dateFormat.format(expdate)); 
+// 			   "START DATE: " +dateFormat.format(stdate));
  	  
- 	  int results = date.compareTo(expdate);
- 	 Log.d("TAG","time cmpare:  "+results);// -1 means first before secnd..not expired
- 	   String highest = item.get(ActiveBidsActivity.KEY_HIGHESTPRICE);
- 	   String mycurrprice = item.get(ActiveBidsActivity.KEY_MYPRICE);
- 	   
- 	  	double high = Double.parseDouble(highest.trim());
- 	  	double mycurr = Double.parseDouble(mycurrprice.trim());
+// 	  int results = date.compareTo(stdate);
+// 	 Log.d("TAG","time cmpare:  "+results);// -1 means first before secnd..not started
+
+ 	  // String mycurrprice = item.get(ActiveBidsActivity.KEY_MYPRICE);
+ 	 
  	  	
- 	    if(expdate.after(date)){//
- 	    	
- 	      System.out.println("Current transaction. My current price is "+mycurr + " and highest bid is: "+high);
- 	      
- 	      if (mycurr>=high){
- 	    	 status.setText("Winning :)");
- 	    	 status.setTextColor(Color.BLUE);
- 	      }
- 	      
- 	      else if (mycurr<high){
- 	    	 status.setText("Losing :(");
- 	    	 status.setTextColor(Color.parseColor("#FF5721"));
- 	      }
- 	
- 	    }
- 	    else {
- 	      System.out.println("expdate is before today.");
- 	      status.setText("Expired");
- 	      status.setTextColor(Color.RED);
- 	    }
- 	   
+ 	  //	double mycurr = Double.parseDouble(mycurrprice.trim());
+ 	  	
+// 	  	if (results<0){//start date is after today
+// 	  		status.setText("Not started");
+//	    	status.setTextColor(Color.BLUE);
+// 	  	}
+// 	  	else if (results>=0){//start date before or on today
+	 	//    if(expdate.after(date)){//time left for bid
+	 	    	
+	 	    	status.setText("Shipped!");
+	 	    	 status.setTextColor(Color.MAGENTA);
+	 	    	 
+	 	    	 int a = expdate.getDay()+2;
+	 	    	 if (date.getDay()>=a ){
+	 	    		status.setText("Delivered!");
+		 	    	 status.setTextColor(Color.MAGENTA);
+	 	    	 }
+	 	    		 
+	 	      
+	 	     /* if (mycurr>=high){
+	 	    	 status.setText("Winning :)");
+	 	    	 status.setTextColor(Color.parseColor("#3B5323"));
+	 	      }
+	 	      
+	 	      else if (mycurr<high){
+	 	    	 status.setText("Losing :(");
+	 	    	 status.setTextColor(Color.parseColor("#FF5721"));
+	 	      }*/
+	 	
+//	 	    }
+	 	    
+//	 	    else {
+//	 	      System.out.println("expdate is before today.");
+//	 	      status.setText("Expired");
+//	 	      status.setTextColor(Color.RED);
+//	 	    }
+// 	  	}
+	 	    
+ 	  /* try{
+ 		  double high = Double.parseDouble(highest.trim());
+ 		 highestBid.setText("$"+item.get(WatchlistActivity.KEY_HIGHESTPRICE) + "0");
+ 	   }
+ 	   catch(Exception e){
+ 		  highestBid.setText("No bids");
+ 	   }*/
         
- 	   System.out.println("highest bid is: " +item.get(ActiveBidsActivity.KEY_HIGHESTPRICE));
-        highestBid.setText("$"+item.get(ActiveBidsActivity.KEY_HIGHESTPRICE) + "0");
-        imageLoader.DisplayImage("http://10.0.2.2:3000"+item.get(ActiveBidsActivity.KEY_THUMB_URL), thumb_image);
-//        imageLoader.DisplayImage("http://japanese.pages.tcnj.edu/files/2011/09/Maccha_200.jpg", thumb_image);
+// 	   System.out.println("highest bid is: " +item.get(WatchlistActivity.KEY_HIGHESTPRICE));
         
-//        imageLoader.DisplayImage("http://10.0.2.2:3000"+"/system/items/pictures/000/000/004/original/Autumn.jpg?1354124701", thumb_image);
-		
-	}
+        imageLoader.DisplayImage("http://10.0.2.2:3000"+item.get(WatchlistActivity.KEY_THUMB_URL), thumb_image);
+        
+     
+        return vi;
+    }
+    
+    
+    
+
+
 
 	private Date parseDate(String date, String format) throws ParseException
     {

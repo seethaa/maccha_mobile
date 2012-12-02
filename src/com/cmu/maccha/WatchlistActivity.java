@@ -96,7 +96,8 @@ public class WatchlistActivity extends Activity {
   	protected void onResume()
   	{
   		super.onResume();
-  		
+  		updateBids("seethaa@cmu.edu");
+		this.adapter.notifyDataSetChanged();
   	
   	}
 
@@ -105,7 +106,8 @@ public class WatchlistActivity extends Activity {
   	{
 
   		super.onPause();
-  	
+  		updateBids("seethaa@cmu.edu");
+		this.adapter.notifyDataSetChanged();
   		
   	}
 
@@ -113,7 +115,8 @@ public class WatchlistActivity extends Activity {
   	protected void onStop()
   	{
   		super.onStop();
-  		
+  		updateBids("seethaa@cmu.edu");
+		this.adapter.notifyDataSetChanged();
   		
   	}
     @Override

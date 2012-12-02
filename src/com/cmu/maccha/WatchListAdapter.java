@@ -124,7 +124,7 @@ public class WatchListAdapter extends ArrayAdapter<HashMap<String, String>> {
 	 	    if(expdate.after(date)){//time left for bid
 	 	    	
 	 	    	status.setText("Current");
-	 	    	 status.setTextColor(Color.YELLOW);
+	 	    	 status.setTextColor(Color.parseColor("#3B5323"));
 	 	      
 	 	     /* if (mycurr>=high){
 	 	    	 status.setText("Winning :)");
