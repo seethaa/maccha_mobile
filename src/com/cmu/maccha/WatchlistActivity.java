@@ -33,6 +33,8 @@ public class WatchlistActivity extends Activity {
 		static final String KEY_DESC = "description";
 		static final String KEY_CATEGORY = "category";
 		static final String KEY_CONDITION = "condition";
+		static final String KEY_STARTTIME = "start-time";
+		static final String KEY_HIGHESTPRICE= "max-bid";
 		static final String KEY_LOCATION = "location";
 		static final String KEY_SELLERNAME = "seller_id"; //int
 		static final String KEY_EXPIREDATE = "end-time"; //datetime
@@ -47,9 +49,9 @@ public class WatchlistActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_active_bids);
         
-        MyCha.currentTab = 2;
+        MyCha.currentTab = 3;
         
-        Log.d("TAG", "I got to watchlist activity..");
+        Log.d("TAG", "I got to watchlist activity.." +MyCha.currentTab  );
         addedNames = new ArrayList<String>();
         
         itemsList = new ArrayList<HashMap<String, String>>();
@@ -90,7 +92,30 @@ public class WatchlistActivity extends Activity {
 	        	this.adapter.notifyDataSetChanged();
     }
 
-    
+    @Override
+  	protected void onResume()
+  	{
+  		super.onResume();
+  		
+  	
+  	}
+
+  	@Override
+  	protected void onPause()
+  	{
+
+  		super.onPause();
+  	
+  		
+  	}
+
+  	@Override
+  	protected void onStop()
+  	{
+  		super.onStop();
+  		
+  		
+  	}
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -126,7 +151,9 @@ public class WatchlistActivity extends Activity {
 		            map.put(KEY_DESC, parser.getValue(e, KEY_DESC));
 		            map.put(KEY_CATEGORY, parser.getValue(e, KEY_CATEGORY));
 		            map.put(KEY_CONDITION, parser.getValue(e, KEY_CONDITION));
+		            map.put(KEY_STARTTIME, parser.getValue(e, KEY_STARTTIME));
 		            map.put(KEY_LOCATION, parser.getValue(e, KEY_LOCATION));
+		            map.put(KEY_HIGHESTPRICE, parser.getValue(e, KEY_HIGHESTPRICE));
 		            map.put(KEY_SELLERNAME, parser.getValue(e, KEY_SELLERNAME));
 		            map.put(KEY_EXPIREDATE, parser.getValue(e, KEY_EXPIREDATE));
 		            map.put(KEY_THUMB_URL, parser.getValue(e, KEY_THUMB_URL));
