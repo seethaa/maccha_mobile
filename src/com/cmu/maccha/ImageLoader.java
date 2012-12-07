@@ -23,7 +23,8 @@ import android.graphics.BitmapFactory;
 import android.widget.ImageView;
  
 public class ImageLoader {
- 
+	private final String localURL = "128.237.134.67";
+	
     MemoryCache memoryCache=new MemoryCache();
     FileCache fileCache;
     private Map<ImageView, String> imageViews=Collections.synchronizedMap(new WeakHashMap<ImageView, String>());

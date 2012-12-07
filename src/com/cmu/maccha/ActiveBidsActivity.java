@@ -40,6 +40,7 @@ public class ActiveBidsActivity extends Activity {
 	private ArrayList<String> itemsToAdd;
 	private  ArrayList<HashMap<String, String>> itemsList;
 	private ArrayList<String> addedNames;
+	private final String localURL = "128.237.134.67";
 	
 	//XML node keys
 	static final String KEY_NAME = "name";
@@ -151,7 +152,8 @@ public class ActiveBidsActivity extends Activity {
     }
     
     private void updateBids(String username ){
-    	String URL = "http://10.0.2.2:3000/api/users/1/bids.xml";
+//    	String URL = "http://10.0.2.2:3000/api/users/1/bids.xml";
+    	String URL = "http://"+localURL+":3000/api/users/1/bids.xml";
     	  XMLParser parser = new XMLParser();
           String xml = parser.getXmlFromUrl(URL); // getting XML from URL
           Log.d("TAG", xml);

@@ -7,6 +7,7 @@ import java.util.Map;
 import android.graphics.Bitmap;
  
 public class MemoryCache {
+	private final String localURL = "128.237.134.67";
     private Map<String, SoftReference<Bitmap>> cache=Collections.synchronizedMap(new HashMap<String, SoftReference<Bitmap>>());
  
     public Bitmap get(String id){

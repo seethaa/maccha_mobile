@@ -27,7 +27,8 @@ public class WatchListAdapter extends ArrayAdapter<HashMap<String, String>> {
     private Activity activity;
     private LayoutInflater inflater=null;
     public ImageLoader imageLoader; 
- 
+    private final String localURL = "128.237.134.67";
+    
     public WatchListAdapter(Activity a, ArrayList<HashMap<String, String>> d) {
     	super(a, R.layout.list_row,d);
         activity = a;
@@ -155,7 +156,7 @@ public class WatchListAdapter extends ArrayAdapter<HashMap<String, String>> {
         
  	   System.out.println("highest bid is: " +item.get(WatchlistActivity.KEY_HIGHESTPRICE));
         
-        imageLoader.DisplayImage("http://10.0.2.2:3000"+item.get(WatchlistActivity.KEY_THUMB_URL), thumb_image);
+        imageLoader.DisplayImage("http://"+localURL+":3000"+item.get(WatchlistActivity.KEY_THUMB_URL), thumb_image);
         
      
         return vi;
@@ -251,7 +252,7 @@ public class WatchListAdapter extends ArrayAdapter<HashMap<String, String>> {
         
  	   System.out.println("highest bid is: " +item.get(WatchlistActivity.KEY_HIGHESTPRICE));
         
-        imageLoader.DisplayImage("http://10.0.2.2:3000"+item.get(WatchlistActivity.KEY_THUMB_URL), thumb_image);
+        imageLoader.DisplayImage("http://"+localURL+":3000"+item.get(WatchlistActivity.KEY_THUMB_URL), thumb_image);
 //        imageLoader.DisplayImage("http://japanese.pages.tcnj.edu/files/2011/09/Maccha_200.jpg", thumb_image);
         
 //        imageLoader.DisplayImage("http://10.0.2.2:3000"+"/system/items/pictures/000/000/004/original/Autumn.jpg?1354124701", thumb_image);
@@ -324,7 +325,7 @@ public class WatchListAdapter extends ArrayAdapter<HashMap<String, String>> {
         
  	   System.out.println("highest bid is: " +item.get(ActiveBidsActivity.KEY_HIGHESTPRICE));
         highestBid.setText("$"+item.get(ActiveBidsActivity.KEY_HIGHESTPRICE) + "0");
-        imageLoader.DisplayImage("http://10.0.2.2:3000"+item.get(ActiveBidsActivity.KEY_THUMB_URL), thumb_image);
+        imageLoader.DisplayImage("http://"+localURL+":3000"+item.get(ActiveBidsActivity.KEY_THUMB_URL), thumb_image);
 //        imageLoader.DisplayImage("http://japanese.pages.tcnj.edu/files/2011/09/Maccha_200.jpg", thumb_image);
         
 //        imageLoader.DisplayImage("http://10.0.2.2:3000"+"/system/items/pictures/000/000/004/original/Autumn.jpg?1354124701", thumb_image);

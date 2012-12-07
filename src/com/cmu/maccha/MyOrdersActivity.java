@@ -25,6 +25,7 @@ public class MyOrdersActivity extends Activity {
 	private ArrayList<String> itemsToAdd;
 	private  ArrayList<HashMap<String, String>> itemsList;
 	private ArrayList<String> addedNames;
+	private final String localURL = "128.237.134.67";
 	
 	//XML node keys
 	static final String KEY_NAME = "name";
@@ -91,6 +92,33 @@ public class MyOrdersActivity extends Activity {
     }
 
     @Override
+  	protected void onResume()
+  	{
+  		super.onResume();
+  		updateBids("seethaa@cmu.edu");
+		this.adapter.notifyDataSetChanged();
+  	
+  	}
+
+  	@Override
+  	protected void onPause()
+  	{
+
+  		super.onPause();
+  		updateBids("seethaa@cmu.edu");
+		this.adapter.notifyDataSetChanged();
+  		
+  	}
+
+  	@Override
+  	protected void onStop()
+  	{
+  		super.onStop();
+  		updateBids("seethaa@cmu.edu");
+		this.adapter.notifyDataSetChanged();
+  		
+  	}
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_my_orders, menu);
         return true;
@@ -109,7 +137,8 @@ public class MyOrdersActivity extends Activity {
     
     
     private void updateBids(String username ){
-    	String URL = "http://10.0.2.2:3000/api/users/1/transactions.xml";
+//    	String URL = "http://10.0.2.2:3000/api/users/1/transactions.xml";
+    	String URL = "http://"+localURL+":3000/api/users/1/transactions.xml";
     	  XMLParser parser = new XMLParser();
           String xml = parser.getXmlFromUrl(URL); // getting XML from URL
           System.out.println(xml);

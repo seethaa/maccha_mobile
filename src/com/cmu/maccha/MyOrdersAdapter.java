@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
  
 public class MyOrdersAdapter extends ArrayAdapter<HashMap<String, String>> {
+	private final String localURL = "128.237.134.67";
 	
 	private ArrayList<HashMap<String, String>> data;
     private Activity activity;
@@ -161,7 +162,7 @@ public class MyOrdersAdapter extends ArrayAdapter<HashMap<String, String>> {
         
 // 	   System.out.println("highest bid is: " +item.get(WatchlistActivity.KEY_HIGHESTPRICE));
         
-        imageLoader.DisplayImage("http://10.0.2.2:3000"+item.get(WatchlistActivity.KEY_THUMB_URL), thumb_image);
+        imageLoader.DisplayImage("http://"+localURL+":3000/"+item.get(WatchlistActivity.KEY_THUMB_URL), thumb_image);
         
      
         return vi;
