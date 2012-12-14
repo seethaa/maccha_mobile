@@ -13,7 +13,7 @@ import android.widget.TabHost.TabSpec;
 
 @SuppressWarnings("deprecation")
 public class MyCha extends TabActivity {
-	private final String localURL = "128.237.134.67";
+	private final String localURL = "10.0.0.11";//"128.237.134.67";
 //	private FragmentTabHost mTabHost;
 	
 	static int currentTab = 1;

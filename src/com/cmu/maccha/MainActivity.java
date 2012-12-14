@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
 	static final String TAG = "MACCHA";
 	private static EditText un;
 	private static EditText pw;
-	private final String localURL = "128.237.134.67";
+	private final String localURL = "10.0.0.11";//"10.0.0.11";//"128.237.134.67";
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {

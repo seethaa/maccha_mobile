@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class SettingsActivity extends Activity {
-	private final String localURL = "128.237.134.67";
+	private final String localURL ="10.0.0.11";// "128.237.134.67";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

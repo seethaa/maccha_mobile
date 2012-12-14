@@ -40,7 +40,7 @@ public class ActiveBidsActivity extends Activity {
 	private ArrayList<String> itemsToAdd;
 	private  ArrayList<HashMap<String, String>> itemsList;
 	private ArrayList<String> addedNames;
-	private final String localURL = "128.237.134.67";
+	private final String localURL = "10.0.0.11";//"128.237.134.67";
 	
 	//XML node keys
 	static final String KEY_NAME = "name";

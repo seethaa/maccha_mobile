@@ -4,7 +4,7 @@ import java.io.File;
 import android.content.Context;
  
 public class FileCache {
-	private final String localURL = "128.237.134.67";
+	private final String localURL = "10.0.0.11";//"128.237.134.67";
     private File cacheDir;
  
     public FileCache(Context context){

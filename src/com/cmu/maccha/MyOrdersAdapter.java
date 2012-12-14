@@ -22,7 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
  
 public class MyOrdersAdapter extends ArrayAdapter<HashMap<String, String>> {
-	private final String localURL = "128.237.134.67";
+	private final String localURL = "10.0.0.11";//"128.237.134.67";
 	
 	private ArrayList<HashMap<String, String>> data;
     private Activity activity;
@@ -163,7 +163,11 @@ public class MyOrdersAdapter extends ArrayAdapter<HashMap<String, String>> {
 // 	   System.out.println("highest bid is: " +item.get(WatchlistActivity.KEY_HIGHESTPRICE));
         
         imageLoader.DisplayImage("http://"+localURL+":3000/"+item.get(WatchlistActivity.KEY_THUMB_URL), thumb_image);
-        
+//        imageLoader.DisplayImage("http://10.0.0.11:3000/system/items/pictures/000/000/060/small/Stars_Long_Exposure.jpg?1354883008", thumb_image);
+//        imageLoader.DisplayImage("assets/pics/Stars_Long_Exposure.jpg", thumb_image);
+//	 	    	imageLoader.DisplayImage("http://ibmsmartercommerce.sourceforge.net/wp-content/uploads/2012/09/Roses_Bunch_Of_Flowers.jpeg", thumb_image);
+       
+        Log.d("TAG", "URL USED: "+"http://"+localURL+":3000/"+item.get(WatchlistActivity.KEY_THUMB_URL));
      
         return vi;
     }

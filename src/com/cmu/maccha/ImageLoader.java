@@ -23,7 +23,7 @@ import android.graphics.BitmapFactory;
 import android.widget.ImageView;
  
 public class ImageLoader {
-	private final String localURL = "128.237.134.67";
+	private final String localURL = "10.0.0.11";//"128.237.134.67";
 	
     MemoryCache memoryCache=new MemoryCache();
     FileCache fileCache;
