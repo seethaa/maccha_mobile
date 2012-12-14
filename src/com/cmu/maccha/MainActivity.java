@@ -13,20 +13,21 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends Activity {
-	static final String USER = "seethaa@cmu.edu";
-	static final String PASS = "chapwd";
+	static final String USER = "jiasiz@andrew.cmu.edu";//"seethaa@cmu.edu";
+	static final String PASS = "111111";//"chapwd";
 	private static String user;
 	private static String pass;
 	static final String TAG = "MACCHA";
 	private static EditText un;
 	private static EditText pw;
-	private final String localURL = "10.0.0.11";//"10.0.0.11";//"128.237.134.67";
+	public static String localURL = "128.237.217.111";//getResources().getString(R.string.localURL);
+	public static String userNum = "1"; 
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
     	
         un = (EditText) this.findViewById(R.id.username);
         Editable usrnm = un.getText();
@@ -61,12 +62,16 @@ public class MainActivity extends Activity {
             pass = pwd.toString();
             
     		Log.d("TAG", "USER PRESSED SUBMIT: " + user + ", " + pass);
-    		if (user.equals(USER) && pass.equals(PASS)){
-    			Log.d("TAG", "User authenticated..");
+//    		if (user.equals(USER) && pass.equals(PASS)){
+//    			 Log.d("TAG", "User authenticated..");
 	        	Intent intent = new Intent(MainActivity.this, MyCha.class); 
 	        	startActivity(intent);
-    		}
+//    		}
         }
     };
+    
+    public String getURL(){
+    	return this.localURL;
+    }
 
 }

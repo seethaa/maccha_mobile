@@ -27,7 +27,7 @@ public class WatchListAdapter extends ArrayAdapter<HashMap<String, String>> {
     private Activity activity;
     private LayoutInflater inflater=null;
     public ImageLoader imageLoader; 
-    private final String localURL = "10.0.0.11";//"128.237.134.67";
+    private final String localURL = MainActivity.localURL;//"128.237.212.48";// "10.0.0.11";//"128.237.134.67";
     
     public WatchListAdapter(Activity a, ArrayList<HashMap<String, String>> d) {
     	super(a, R.layout.list_row,d);

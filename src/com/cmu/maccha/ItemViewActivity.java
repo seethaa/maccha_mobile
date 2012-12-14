@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class ItemViewActivity extends Activity {
-	private final String localURL = "10.0.0.11";//"128.237.134.67";
+	private final String localURL =  "128.237.212.48";//"10.0.0.11";//"128.237.134.67";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -22,7 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
  
 public class MyOrdersAdapter extends ArrayAdapter<HashMap<String, String>> {
-	private final String localURL = "10.0.0.11";//"128.237.134.67";
+	private final String localURL = MainActivity.localURL;//"128.237.212.48";// "10.0.0.11";//"128.237.134.67";
 	
 	private ArrayList<HashMap<String, String>> data;
     private Activity activity;

@@ -11,5 +11,6 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_active_bids">ActiveBidsActivity</string>
     <string name="title_activity_item_view">ItemViewActivity</string>
+    <string name ="localURL">128.237.217.111</string>
 
 </resources>
