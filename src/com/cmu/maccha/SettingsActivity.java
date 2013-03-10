@@ -12,11 +12,8 @@ public class SettingsActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        TextView textview = new TextView(this);
-        textview.setText("This is Android tab");
-        setContentView(textview);
-        //setContentView(R.layout.activity_settings);
+
+        setContentView(R.layout.activity_settings);
 //        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

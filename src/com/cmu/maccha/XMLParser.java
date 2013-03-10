@@ -23,6 +23,11 @@ import org.xml.sax.SAXException;
  
 import android.util.Log;
  
+/**
+ * XMLParser class to take care of parsing HTTP requests
+ * @author seetha
+ *
+ */
 public class XMLParser {
 	static final String TAG = "MACCHA";
  

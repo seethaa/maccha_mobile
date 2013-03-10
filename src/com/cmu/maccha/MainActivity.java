@@ -13,15 +13,17 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends Activity {
-	static final String USER = "jiasiz@andrew.cmu.edu";//"seethaa@cmu.edu";
+	static final String USER = "jiasiz@andrew.cmu.edu";//hard-coded for demo purposes
 	static final String PASS = "111111";//"chapwd";
 	private static String user;
 	private static String pass;
 	static final String TAG = "MACCHA";
 	private static EditText un;
 	private static EditText pw;
-	public static String localURL = "128.237.217.111";//getResources().getString(R.string.localURL);
-	public static String userNum = "1"; 
+	
+	//hardcoded for demo purposes
+	public static String localURL = "128.237.138.106";//getResources().getString(R.string.localURL);
+	public static String userNum = "2"; 
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {

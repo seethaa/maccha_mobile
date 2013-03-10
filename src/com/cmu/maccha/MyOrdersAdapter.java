@@ -79,7 +79,7 @@ public class MyOrdersAdapter extends ArrayAdapter<HashMap<String, String>> {
 //        String starttime = item.get(MyOrdersActivity.KEY_STARTTIME);
 //        starttime = starttime.substring(0,10) + " " + starttime.substring(11,starttime.length()-2);
         
-//        System.out.println("pringing starttime.." +starttime);
+//        System.out.println("printing starttime.." +starttime);
         
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
